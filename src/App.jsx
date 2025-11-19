@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import AuthGate from './components/AuthGate'
 import PromptBuilder from './components/PromptBuilder'
 import ResultViewer from './components/ResultViewer'
+import Examples from './components/Examples'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -24,10 +25,10 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
+    <div className="min-h-screen bg-slate-950 text-white">
       <Hero />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pb-24 -mt-24">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pb-24 -mt-24">
         {!user ? (
           <AuthGate onSignedIn={setUser} />
         ) : (
@@ -37,8 +38,10 @@ function App() {
           </div>
         )}
 
+        <Examples />
+
         {saveResult && (
-          <div className="mt-6 bg-slate-800/60 border border-blue-500/20 rounded-2xl p-6 shadow-xl">
+          <div className="mt-6 bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 shadow-xl">
             <h3 className="text-xl font-semibold mb-2">Share your profile</h3>
             <p className="text-blue-100/80 text-sm">Share link:</p>
             <a className="text-blue-300 underline break-all" href={`/${saveResult.share_slug}`} target="_blank" rel="noreferrer">
